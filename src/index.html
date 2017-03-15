@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="datepicker">
+
+<head>
+		<meta charset="UTF-8">
+		<title>Datepicker</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>-->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<!--<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>-->
+		<!--<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>-->
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>-->
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>-->
+		<!--<script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>-->
+		<script src="js/main.js"></script>
+
+		<body ng-controller="mainController as date">
+				<div class="container" >
+						<!--<h2>{{date.dateNow}}</h2>
+						<h2>{{date.day}}</h2>
+						<h2>{{date.month}}</h2>
+						<h2>{{date.year}}</h2>
+						<h2>{{date.firstDayOfMonth}}</h2>
+						<h2>{{date.monthLength}}</h2>
+						<h2>{{date.weeks}}</h2>-->
+						<!--<button ng-click="date.month = date.month + 1; ">+</button>-->
+						<button ng-click="date.changeMonth('+') ">+</button>
+						{{date.curruntYear + ', ' + date.ms[date.curruntMonth] + ', ' + date.curruntMonth}}
+						<button ng-click="date.changeMonth('-') ">-</button>
+						<!--<button ng-click="date.changeMonth('-')">-</button>-->
+						<!--<button ng-click="date.month">-</button>-->
+						<table  width="333">
+							<thead>
+								<th>пон</th>
+								<th>вт</th>
+								<th>ср</th>
+								<th>чт</th>
+								<th>птн</th>
+								<th>сб</th>
+								<th>нд</th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="week in date.weeks track by $index">
+									<td ng-repeat="d in week track by $index">{{d}}</td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+		</body>
+
+</html>
