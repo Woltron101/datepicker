@@ -1,4 +1,7 @@
-.git
 .sass-cache
-node_modules
+
 dist
+node_modules
+bower_components
+
+dploy.yaml

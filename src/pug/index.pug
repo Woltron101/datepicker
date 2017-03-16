@@ -1,0 +1,26 @@
+extends _layouts/_default.pug
+
+block vars
+  - var page_title = "Datepicker"
+
+block content
+  .wrapper
+    .main-date(ng-click="date.isActive = true") {{date.mainDate}}
+    .datapicker.clearfix(ng-show="date.isActive")
+      form(action="#" name="selectedDate")
+        input(type="text" value="{{date.selectedDateTextFormat1}}" disabled)
+        input.time(type="text" value="{{date.dateNow | date : 'H:mm'}}" ng-model="date.time" ng-pattern="/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/" ng-required="true")
+    
+      div.controls
+        button.prev(ng-click="date.changeMonth('-')")
+        button.next(ng-click="date.changeMonth('+')")
+        div.current-month {{date.currentYear + ', ' + date.months[date.currentMonth][0]}}
+      table
+        thead
+          th(ng-repeat="day in date.days") {{day}}
+        tbody
+          tr(ng-repeat="week in date.weeks track by $index")
+            td(ng-repeat="d in week track by $index" ng-click="date.selectDate($event, d)" ng-class="{'selected-date' : date.showSelectedDate(d)}") {{d}}
+
+      button.cancel(ng-click="date.isActive = false") Отменить
+      button.save(ng-click="date.setMainDate()")

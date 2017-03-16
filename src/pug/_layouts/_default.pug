@@ -1,0 +1,11 @@
+block vars
+
+doctype html
+html(ng-app="datepicker")
+  include ../_partials/_head.pug
+
+  body(ng-cloak ng-controller="mainController as date")
+
+    block content
+    
+    script(src="js/bundle.min.js")
