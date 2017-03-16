@@ -1,0 +1,114 @@
+﻿*
+	box-sizing: border-box
+
+button,
+input
+	outline: 0 !important
+
+table
+	border-collapse: collapse
+
+.clearfix
+	&:before,
+	&:after
+		content: ""
+		display: table
+	
+	&:after
+		clear: both
+
+.wrapper
+	width: 280px
+	margin: 50px auto
+
+.datapicker
+	width: 280px
+	box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.3)
+
+.controls
+	margin: 15px 15px 0
+	.prev,
+	.next
+		width: 35px
+		height: 35px
+		border: 0
+		background: url('../img/next.png') 50% 50% no-repeat
+		&:hover
+			background-color: #cef
+	
+	.prev
+		float: left
+		transform: rotate(180deg)	
+	.next
+		float: right
+	
+	.current-month
+		margin: 0 40px
+		line-height: 35px
+		vertical-align: middle
+		text-align: center
+
+input,
+.main-date
+	height: 40px
+	border: 1px solid #ccc
+	text-align: center
+	vertical-align: middle
+	background-color: #fff
+	width: 170px
+	&.time
+		width: 70px
+
+form
+	background-color: #fafafa
+	padding: 15px
+	border-bottom: 1px solid #eee
+
+input.ng-invalid
+	border-color: indianred
+
+table
+	margin: 15px
+
+td,
+th
+	width: 35px
+	height: 35px
+	text-align: center
+	vertical-align: middle
+	color: #666
+
+td
+	border: 1px solid #ccc
+	cursor: pointer
+	&:hover
+		background-color: dodgerblue
+		color: #fff
+	
+	&.selected-date
+		background-color: mediumseagreen
+		color: #fff
+
+.save
+	width: 35px
+	height: 35px
+	background: mediumseagreen url('../img/check-symbol.png') 50% 50% no-repeat
+	border: 0
+	border-radius: 50%
+	float: right
+	margin: 0 15px 15px
+	
+.cancel
+	border: 0
+	margin: 0 15px 15px
+	background-color: transparent
+	color: #ccc
+	text-decoration: underline
+
+.main-date
+	height: 48px
+	width: 250px
+	margin: 15px
+	border: 4px solid dodgerblue
+	border-radius: 3px
+	line-height: 40px

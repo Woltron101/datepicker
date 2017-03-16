@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="datepicker">
-
 <head>
 		<meta charset="UTF-8">
 		<title>Datepicker</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
 		<script src="js/main.js"></script>
 </head>
 <body ng-controller="mainController as date">
 	<div class="wrapper">
-		<div class="main-date">{{date.mainDate}}</div>
-		<div class="datapicker clearfix">
-			<form action="#">
+		<div class="main-date" ng-click="date.isActive = true">{{date.mainDate}}</div>
+		<div class="datapicker clearfix" ng-show="date.isActive">
+			<form action="#" name="selectedDate">
 				<input type="text" class="" value="{{date.selectedDateTextFormat1}}" disabled>
 				<input type="text" class="time" value="{{date.dateNow | date : 'HH:mm'}}" ng-model="date.time" ng-pattern="/([01]\d|2[0-3]):([0-5]\d)/" ng-required="true">
 			</form>
@@ -32,9 +30,9 @@
 					</tr>
 				</tbody>
 			</table>
+			<button class="cancel" ng-click="date.isActive = false">Отменить</button>
 			<button class="save" ng-click="date.setMainDate()"></button>
 		</div>
 	</div>
 </body>
-
 </html>

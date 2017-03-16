@@ -64,7 +64,8 @@
 		}
 		
 		vm.setMainDate = function(){
-			vm.mainDate = vm.selectedDateTextFormat2 + vm.time;
+			vm.mainDate = vm.selectedDateTextFormat2 + vm.time; 
+			vm.isActive = false;
 		}
 
 		function createMonthArr(){
