@@ -10,13 +10,13 @@ mainController = ($scope, $filter) ->
 	
 	setSelectedDateText = ->
 		vm.selectedDateTextFormat1 = 
-			$filter('date')(vm.selectedDate, 'd / ') + 
-			vm.months[vm.selectedDate.getMonth()][1] + 
-			$filter('date')(vm.selectedDate, ' / yyyy')
+			"#{$filter('date')(vm.selectedDate, 'd / ')+
+			vm.months[vm.selectedDate.getMonth()][1]+
+			$filter('date')(vm.selectedDate, ' / yyyy')}"
 		vm.selectedDateTextFormat2 = 
-			$filter('date')(vm.selectedDate, 'd ') + 
-			vm.months[vm.selectedDate.getMonth()][1] + 
-			$filter('date')(vm.selectedDate, ' yyyy ')
+			"#{$filter('date')(vm.selectedDate, 'd ')+
+			vm.months[vm.selectedDate.getMonth()][1] +
+			$filter('date')(vm.selectedDate, ' yyyy ')}"
 		
 	createMonthArr = ->
 		week = []
@@ -25,7 +25,7 @@ mainController = ($scope, $filter) ->
 		vm.weeks = []
 
 		newWeek = ->
-			vm.weeks.push(week)
+			vm.weeks.push week
 			week=[]
 			currentDay = 0
 
@@ -34,18 +34,18 @@ mainController = ($scope, $filter) ->
 			
 		for date in [1..vm.monthLength]
 			if date isnt 1
-				week.push(date)
+				week.push date
 				if vm.monthLength is date
 					week[6] = ''
-					vm.weeks.push(week)
+					vm.weeks.push week
 				if currentDay isnt 6 then currentDay++
-				else newWeek()
+				else do newWeek
 			else
 				if currentDay is 6
 					week[vm.firstDayOfMonth] = 1
-					newWeek()
+					do newWeek
 				else week[vm.firstDayOfMonth-1] = 1
-		console.log("vm.weeks ", vm.weeks)
+		return
 
 	vm.dateNow = vm.selectedDate = new Date()
 	vm.day = vm.dateNow.getDate()
@@ -67,14 +67,14 @@ mainController = ($scope, $filter) ->
 		['Ноябрь', 'Ноября']
 		['Декабрь', 'Декабря']
 	]
-	setSelectedDateText()
-	setCurrentMonthPrams()
+	do setSelectedDateText
+	do setCurrentMonthPrams
 
 	vm.changeMonth = (operator) ->
 		if operator is '+' then vm.month++
 		else vm.month--
-		setCurrentMonthPrams()
-		createMonthArr()
+		do setCurrentMonthPrams
+		do createMonthArr
 	
 	vm.selectDate = (e, date) ->
 		if not date then return
@@ -85,11 +85,11 @@ mainController = ($scope, $filter) ->
 			vm.dateNow.getHours(), 
 			vm.dateNow.getMinutes()
 		)
-		setSelectedDateText()
+		do setSelectedDateText
 		angular.element(document.querySelectorAll('.selected-date')).removeClass('selected-date')
 		angular.element(e.target).addClass('selected-date')	
 
-	vm.showSelectedDate = (date) =>
+	vm.showSelectedDate = (date) ->
 		return (
 			vm.selectedDate.getMonth() is vm.currentMonth and
 			vm.selectedDate.getFullYear() is vm.currentYear and
@@ -100,7 +100,7 @@ mainController = ($scope, $filter) ->
 		vm.mainDate = vm.selectedDateTextFormat2 + vm.time 
 		vm.isActive = false
 
-	createMonthArr()
+	do createMonthArr
 
 angular
 	.module('datepicker')

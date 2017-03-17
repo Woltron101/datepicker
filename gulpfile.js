@@ -72,7 +72,6 @@ gulp.task('js', function() {
 
     return gulp.src([
         'bower_components/angular/angular.min.js',
-        'bower_components/angular-ui-router/release/angular-ui-router.min.js',
         'src/js/app.{js,coffee}',
         'src/js/*/**/*.{js,coffee}',
         '!src/js/vendors/*'
